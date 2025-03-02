@@ -1,0 +1,1 @@
+from backend.app.api.posts import router as posts_router

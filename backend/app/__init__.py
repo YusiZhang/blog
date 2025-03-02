@@ -1,0 +1,1 @@
+from backend.app.schemas.post import Post, PostCreate, PostUpdate
