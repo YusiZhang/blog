@@ -24,3 +24,9 @@ frontend/
 ├── package.json      # Dependencies and scripts
 └── vite.config.js    # Vite configuration
 ```
+
+## Run dev
+```
+cd frontend
+npm run dev:all
+```

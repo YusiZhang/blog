@@ -10,10 +10,15 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Use the full viewport height */
+  align-items: center; /* Center everything horizontally */
 }
 
 .container {
-  max-width: 800px;
+  width: 100%;
+  max-width: 100%; 
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -33,6 +38,7 @@ a:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
   margin-bottom: 2rem;
+  width: 100%; /* Full width header */
 }
 
 .header .container {
@@ -56,17 +62,36 @@ a:hover {
   margin-left: 1.5rem;
 }
 
+/* Main Content */
+main.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  width: 100%; /* Full width of container */
+  max-width: 100%; 
+  flex: 1; /* Take up available space */
+  /* 0 padding so the container line up with the header and footer broader */
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
 /* Posts */
 .post-list {
   margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
 }
 
 .post-preview {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .post-preview h2 {
@@ -81,12 +106,14 @@ a:hover {
 
 .post-excerpt {
   margin-bottom: 1rem;
+  flex-grow: 1; /* Take up available space */
 }
 
 .read-more {
   display: inline-block;
   color: #0066cc;
   font-weight: bold;
+  margin-top: auto; /* Push to bottom of flex container */
 }
 
 /* Post Detail */
@@ -95,6 +122,7 @@ a:hover {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
+  width: 100%;
 }
 
 .post-header {
@@ -135,8 +163,9 @@ a:hover {
 .create-post {
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(252, 252, 252, 0.1); */
   padding: 2rem;
+  width: 100%;
 }
 
 .create-post h2 {
@@ -160,6 +189,8 @@ input, textarea {
   border-radius: 3px;
   font-family: inherit;
   font-size: inherit;
+  background-color: #ffffff; /* Explicitly setting white background */
+  color: #333; /* Ensuring text is visible */
 }
 
 textarea {
@@ -199,4 +230,70 @@ small {
   margin-top: 2rem;
   text-align: center;
   color: #666;
+  width: 100%; /* Full width footer */
+}
+
+/* Responsive forms */
+@media (min-width: 768px) {
+  .create-post form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .form-group:nth-child(3), 
+  .form-group:nth-child(4) {
+    grid-column: span 2;
+  }
+}
+
+/* for better text scaling */
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .post-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .post-preview, .post, .create-post {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .nav li {
+    margin-left: 0;
+  }
 }
